@@ -1,0 +1,22 @@
+﻿# Build artifacts
+*.exe
+*.obj
+*.o
+*.pdb
+*.ilk
+*.log
+
+# VS Code
+.vscode/
+
+# Raylib / temp
+*.dll
+*.lib
+*.tmp
+
+# OS junk
+Thumbs.db
+Desktop.ini
+
+# Archives
+*.zip
