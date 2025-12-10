@@ -31,41 +31,41 @@ The build system will compile all source files and produce a single executable:
 The project is organized for clarity and scalability:
 
 3DSRC/
-├── shaders/ # GLSL shaders (lighting + shadow mapping)
-│ ├── lighting.vs
-│ ├── lighting.fs
-│ ├── shadow.vs
-│ └── shadow.fs
+├── shaders/                         # GLSL shaders (lighting + shadow mapping)
+│   ├── lighting.vs
+│   ├── lighting.fs
+│   ├── shadow.vs
+│   └── shadow.fs
 │
 ├── src/
-│ ├── app/ # Application entry point
-│ │ └── main.cpp
+│   ├── app/                         # Application entry point
+│   │   └── main.cpp
+│   │
+│   ├── core/                        # Core engine systems
+│   │   ├── GameObject.*
+│   │   └── Transform3D.*
+│   │
+│   ├── rendering/                  # Rendering, camera, lighting
+│   │   ├── RenderPipeline.*
+│   │   ├── CameraComponent.*
+│   │   ├── CameraController.*
+│   │   ├── MeshFilter.*
+│   │   ├── MeshRenderer.*
+│   │   ├── ShadowMap.*
+│   │   └── LightComponent.*
+│   │
+│   ├── physics/                    # Collision and physics
+│   │   └── BoxCollider.*
+│   │
+│   └── game/                       # Gameplay logic and demo scenes
+│       ├── DemoScene3D.*
+│       └── PlayerController.*
 │
-│ ├── core/ # Core engine systems
-│ │ ├── GameObject.*
-│ │ └── Transform3D.*
-│
-│ ├── rendering/ # Rendering + camera + lighting
-│ │ ├── RenderPipeline.*
-│ │ ├── CameraComponent.*
-│ │ ├── CameraController.*
-│ │ ├── MeshFilter.*
-│ │ ├── MeshRenderer.*
-│ │ ├── ShadowMap.*
-│ │ └── LightComponent.*
-│
-│ ├── physics/ # Collision and physics
-│ │ └── BoxCollider.*
-│
-│ └── game/ # Gameplay logic and demo scenes
-│ ├── DemoScene3D.*
-│ └── PlayerController.*
-│
-├── Makefile # Project build configuration (MinGW + raylib)
-├── main.code-workspace # VS Code workspace file
+├── Makefile                        # Project build configuration (MinGW + raylib)
+├── main.code-workspace             # VS Code workspace file
 └── .vscode/
-├── tasks.json
-└── launch.json
+    ├── tasks.json
+    └── launch.json
 
 ---
 
