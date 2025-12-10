@@ -1,7 +1,5 @@
-@"
 # Build artifacts
 *.exe
-*.obj
 *.o
 *.pdb
 *.ilk
@@ -21,4 +19,9 @@ Desktop.ini
 
 # Archives
 *.zip
-"@ | Out-File -Encoding utf8 .gitignore
+
+# Allow asset models
+!resources/models/*.obj
+!resources/models/*.mtl
+!resources/models/*.fbx
+!resources/models/*.3ds
