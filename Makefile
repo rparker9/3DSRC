@@ -250,7 +250,16 @@ endif
 
 # Define include paths for required headers
 # NOTE: Several external required libraries (stb and others)
-INCLUDE_PATHS = -I. -I$(RAYLIB_PATH)/src -I$(RAYLIB_PATH)/src/external
+INCLUDE_PATHS = -I. \
+    -Isrc \
+    -Isrc/app \
+    -Isrc/core \
+    -Isrc/rendering \
+    -Isrc/game \
+    -Isrc/physics \
+    -I$(RAYLIB_PATH)/src \
+    -I$(RAYLIB_PATH)/src/external
+
 ifneq ($(wildcard /opt/homebrew/include/.*),)
     INCLUDE_PATHS += -I/opt/homebrew/include
 endif
@@ -367,10 +376,17 @@ rwildcard=$(foreach d,$(wildcard $1*),$(call rwildcard,$d/,$2) $(filter $(subst 
 SRC_DIR = src
 OBJ_DIR = obj
 
-# Define all object files from source files
-SRC = $(call rwildcard, *.c, *.h)
-#OBJS = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-OBJS ?= main.c
+# C++ source files: use wildcard so empty folders don't break the build
+SRC_CPP := $(wildcard \
+    src/app/*.cpp \
+    src/core/*.cpp \
+    src/rendering/*.cpp \
+    src/game/*.cpp \
+    src/physics/*.cpp \
+)
+
+# We just compile/link all .cpp directly in one step
+override OBJS := $(SRC_CPP)
 
 # For Android platform we call a custom Makefile.Android
 ifeq ($(PLATFORM),PLATFORM_ANDROID)

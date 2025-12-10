@@ -85,4 +85,7 @@ public:
     // Per-frame update: handles input, gravity, jumping, velocity,
     // collision, and ground raycast.
     void Update(float deltaTime) override;
+
+    // Returns true if the player is currently considered grounded.
+    bool IsGrounded() const { return isGrounded; }
 };

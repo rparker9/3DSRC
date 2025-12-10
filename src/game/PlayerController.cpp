@@ -45,8 +45,8 @@ void PlayerController::Update(float deltaTime)
 
     if (IsKeyDown(KEY_W)) inputDir = Vector3Add(inputDir, forward);
     if (IsKeyDown(KEY_S)) inputDir = Vector3Subtract(inputDir, forward);
-    if (IsKeyDown(KEY_A)) inputDir = Vector3Add(inputDir, right);
-    if (IsKeyDown(KEY_D)) inputDir = Vector3Subtract(inputDir, right);
+    if (IsKeyDown(KEY_A)) inputDir = Vector3Subtract(inputDir, right);
+    if (IsKeyDown(KEY_D)) inputDir = Vector3Add(inputDir, right);
 
     bool hasInput = Vector3Length(inputDir) > 0.0f;
     if (hasInput)

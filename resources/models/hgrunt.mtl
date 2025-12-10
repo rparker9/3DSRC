@@ -1,0 +1,62 @@
+# Blender 4.0.2 MTL File: 'None'
+# www.blender.org
+
+newmtl DC_soldier_face_cmdr_wht.BMP
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/Redux/Downloads/PC _ Computer - Half-Life - Enemies & Bosses (High Definition Pack) - HECU Grunt (HD)/HECU Grunt (HD)/DC_soldier_face_cmdr_wht.png
+
+newmtl DC_soldier_head_mask.BMP
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/Redux/Downloads/PC _ Computer - Half-Life - Enemies & Bosses (High Definition Pack) - HECU Grunt (HD)/HECU Grunt (HD)/DC_soldier_head_mask.png
+
+newmtl DC_soldier_misc.BMP
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/Redux/Downloads/PC _ Computer - Half-Life - Enemies & Bosses (High Definition Pack) - HECU Grunt (HD)/HECU Grunt (HD)/DC_soldier_misc.png
+
+newmtl DC_soldier_skin_wht.BMP
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/Redux/Downloads/PC _ Computer - Half-Life - Enemies & Bosses (High Definition Pack) - HECU Grunt (HD)/HECU Grunt (HD)/dc_soldier_skin_blk.png
+
+newmtl DC_soldier_torso.BMP
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/Redux/Downloads/PC _ Computer - Half-Life - Enemies & Bosses (High Definition Pack) - HECU Grunt (HD)/HECU Grunt (HD)/DC_soldier_torso.png
+
+newmtl W_SPAS12_REFERENCE.BMP
+Ns 0.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd C:/Users/Redux/Downloads/PC _ Computer - Half-Life - Enemies & Bosses (High Definition Pack) - HECU Grunt (HD)/HECU Grunt (HD)/m4_world.png
