@@ -26,7 +26,6 @@ The build system will compile all source files and produce a single executable:
 
 ---
 
-```md
 # Project layout
 
 - **shaders/** – GLSL shaders (lighting and shadow mapping)
