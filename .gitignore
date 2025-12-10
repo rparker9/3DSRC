@@ -1,4 +1,5 @@
-﻿# Build artifacts
+@"
+# Build artifacts
 *.exe
 *.obj
 *.o
@@ -20,3 +21,4 @@ Desktop.ini
 
 # Archives
 *.zip
+"@ | Out-File -Encoding utf8 .gitignore

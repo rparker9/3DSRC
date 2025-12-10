@@ -1,84 +1,37 @@
 #include "CameraController.h"
-#include <cmath>
+#include "GameObject.h"
+#include "Transform3D.h"
 
-// Constructor: store references and set default sensitivity.
-CameraController::CameraController(Transform3D& transform, InputManager& input)
-    : transform(transform)
-    , input(input)
-    , mouseSensitivity(0.1f)
-{
-    // Initialize camera struct to safe defaults.
-    camera.position   = { 0.0f, 0.0f, 0.0f };
-    camera.target     = { 0.0f, 0.0f, 0.0f };
-    camera.up         = { 0.0f, 1.0f, 0.0f };
-    camera.fovy       = 60.0f;
-    camera.projection = CAMERA_PERSPECTIVE;
+CameraController::CameraController(float sensitivity) 
+    : mouseSensitivity(sensitivity) {}
+
+void CameraController::Update(float deltaTime) {
+    Transform3D* transform = gameObject->GetTransform();
+    Vector2 mousePos = GetMousePosition();
+    
+    if (firstMouse) {
+        lastMousePos = mousePos;
+        firstMouse = false;
+    }
+    
+    Vector2 mouseDelta = {
+    mousePos.x - lastMousePos.x,
+    mousePos.y - lastMousePos.y
+    };
+    lastMousePos = mousePos;
+
+    // Get current Euler rotation (x = pitch, y = yaw)
+    Vector3 rotation = transform->GetRotation();
+
+    // Make controls feel “natural”:
+    // - moving mouse right turns camera right
+    // - moving mouse up looks up
+    rotation.y -= mouseDelta.x * mouseSensitivity; // invert yaw direction
+    rotation.x += mouseDelta.y * mouseSensitivity; // invert pitch direction
+
+    transform->SetRotation(rotation);
 }
 
-
-// InitializeCamera: sets base camera properties such as FOV and starting pose.
-void CameraController::InitializeCamera(float fovDegrees)
-{
-    // Use current transform for initial camera position.
-    camera.position = transform.position;
-
-    // Target will be computed each frame in Update; set something valid for now.
-    camera.target = { 0.0f, 0.0f, 0.0f };
-
-    // World up vector.
-    camera.up = { 0.0f, 1.0f, 0.0f };
-
-    // Use specified FOV and perspective projection.
-    camera.fovy       = fovDegrees;
-    camera.projection = CAMERA_PERSPECTIVE;
-}
-
-// Update: applies mouse look to transform and rebuilds camera position/target.
-void CameraController::Update(float /*deltaTime*/)
-{
-    // Read mouse movement since last frame.
-    const Vector2 mouseDelta = input.GetMouseDelta();
-
-    // Adjust yaw (Y) and pitch (X) by mouse movement scaled by sensitivity.
-    transform.rotationEuler.y += mouseDelta.x * mouseSensitivity;
-    transform.rotationEuler.x += mouseDelta.y * mouseSensitivity;
-
-    // Clamp pitch to avoid flipping the camera upside down.
-    if (transform.rotationEuler.x > 89.0f)
-        transform.rotationEuler.x = 89.0f;
-
-    if (transform.rotationEuler.x < -89.0f)
-        transform.rotationEuler.x = -89.0f;
-
-    // Convert pitch and yaw from degrees to radians.
-    const float yawRad   = transform.rotationEuler.y * DEG2RAD;
-    const float pitchRad = transform.rotationEuler.x * DEG2RAD;
-
-    // Compute forward direction from yaw and pitch.
-    // Convention: yaw = 0 faces -Z; yaw 90 = +X.
-    Vector3 forward{};
-    forward.x = std::cosf(pitchRad) * std::sinf(yawRad);
-    forward.y = std::sinf(pitchRad);
-    forward.z = -std::cosf(pitchRad) * std::cosf(yawRad);
-
-    // Update camera position directly from transform.
-    camera.position = transform.position;
-
-    // Camera target is one unit in front of the camera along forward vector.
-    camera.target = Vector3Add(camera.position, forward);
-
-    // Use world up vector (simple first-person camera).
-    camera.up = { 0.0f, 1.0f, 0.0f };
-}
-
-// GetCamera: returns internal Camera3D struct for use in BeginMode3D.
-const Camera3D& CameraController::GetCamera() const
-{
-    return camera;
-}
-
-// SetMouseSensitivity: set how strongly mouse movement affects rotation.
-void CameraController::SetMouseSensitivity(float sensitivity)
-{
-    mouseSensitivity = sensitivity;
+void CameraController::SetSensitivity(float sens) { 
+    mouseSensitivity = sens; 
 }
